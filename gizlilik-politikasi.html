@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizlilik Politikası – Connexa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0f14;
+      --surface: #141720;
+      --border: rgba(255,255,255,0.07);
+      --accent: #5b7fff;
+      --accent2: #a78bfa;
+      --text: #e8eaf0;
+      --muted: #8b90a0;
+      --heading-font: 'Syne', sans-serif;
+      --body-font: 'DM Sans', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Ambient glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(91,127,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--heading-font);
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .brand-name {
+      font-family: var(--heading-font);
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--text);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      padding: 60px 0 100px;
+    }
+
+    .page-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(91,127,255,0.1);
+      border: 1px solid rgba(91,127,255,0.25);
+      border-radius: 20px;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section {
+      margin-bottom: 44px;
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .section:hover {
+      border-color: rgba(91,127,255,0.2);
+    }
+
+    .section-number {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-family: var(--heading-font);
+    }
+
+    h2 {
+      font-family: var(--heading-font);
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+    }
+
+    ul li {
+      color: var(--muted);
+      font-size: 15px;
+      padding: 6px 0 6px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+      top: 8px;
+    }
+
+    .highlight-box {
+      background: rgba(91,127,255,0.06);
+      border: 1px solid rgba(91,127,255,0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 16px;
+    }
+
+    .highlight-box p {
+      color: #c5cadc;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(167,139,250,0.06);
+      border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 16px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .contact-card:hover {
+      background: rgba(167,139,250,0.1);
+      border-color: rgba(167,139,250,0.4);
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .contact-card span {
+      color: var(--accent2);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    footer p span {
+      color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a class="brand" href="#">
+        <div class="brand-logo">C</div>
+        <span class="brand-name">Connexa</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="page-label">Yasal Belge</div>
+      <h1>Gizlilik Politikası</h1>
+      <p class="meta">Son güncelleme: 30 Mayıs 2026 &nbsp;·&nbsp; Connexa Mobil Uygulaması</p>
+
+      <div class="section">
+        <div class="section-number">01</div>
+        <h2>Giriş</h2>
+        <p>Connexa olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, mobil uygulamamızı kullandığınızda hangi bilgilerin toplandığını, nasıl kullanıldığını ve nasıl korunduğunu açıklamaktadır.</p>
+        <p>Uygulamayı kullanarak bu politikayı kabul etmiş sayılırsınız. Politikayı kabul etmiyorsanız lütfen uygulamayı kullanmayınız.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">02</div>
+        <h2>Toplanan Bilgiler</h2>
+        <p>Connexa, aşağıdaki bilgileri toplayabilir:</p>
+        <ul>
+          <li>Hesap oluşturma sırasında sağladığınız ad, e-posta adresi ve şifre</li>
+          <li>Uygulama içi aktiviteleriniz ve kullanım istatistikleri</li>
+          <li>Cihaz bilgileri (işletim sistemi, uygulama sürümü, cihaz tanımlayıcısı)</li>
+          <li>Hata raporları ve performans verileri</li>
+          <li>Bize ilettiğiniz geri bildirim ve destek talepleri</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">03</div>
+        <h2>Bilgilerin Kullanım Amacı</h2>
+        <p>Topladığımız bilgileri yalnızca aşağıdaki amaçlarla kullanırız:</p>
+        <ul>
+          <li>Hesabınızı oluşturmak ve yönetmek</li>
+          <li>Uygulama hizmetlerini sunmak ve iyileştirmek</li>
+          <li>Güvenlik açıklarını tespit etmek ve önlemek</li>
+          <li>Teknik destek sağlamak</li>
+          <li>Yasal yükümlülüklerimizi yerine getirmek</li>
+        </ul>
+        <div class="highlight-box">
+          <p>📌 Kişisel verilerinizi hiçbir koşulda üçüncü şahıslara satmıyor veya reklam amaçlı paylaşmıyoruz.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">04</div>
+        <h2>Veri Saklama ve Güvenlik</h2>
+        <p>Verileriniz, endüstri standardı şifreleme yöntemleriyle korunmaktadır. Hesabınızı sildiğinizde, kişisel verileriniz yasal saklama süreleri dışında sistemlerimizden silinir.</p>
+        <p>Veri güvenliğini sağlamak için her türlü teknik ve idari önlemi alıyoruz; ancak internet üzerinden yapılan hiçbir iletimin %100 güvenli olmadığını belirtmek isteriz.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">05</div>
+        <h2>Üçüncü Taraf Hizmetler</h2>
+        <p>Connexa, uygulama işlevselliğini desteklemek amacıyla aşağıdaki üçüncü taraf hizmetleri kullanabilir:</p>
+        <ul>
+          <li>Firebase (Google) – kimlik doğrulama ve analiz</li>
+          <li>Apple App Store / Google Play – uygulama dağıtımı</li>
+          <li>Bulut altyapı sağlayıcıları – veri depolama</li>
+        </ul>
+        <p>Bu hizmetlerin kendi gizlilik politikaları mevcuttur ve veri işleme uygulamaları bizimkinden bağımsızdır.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">06</div>
+        <h2>Çocukların Gizliliği</h2>
+        <p>Connexa, 13 yaşın altındaki çocuklara yönelik değildir. Bilerek 13 yaşın altındaki bireylerden kişisel veri toplamıyoruz. Böyle bir durumun farkına varırsanız lütfen bizimle iletişime geçin.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">07</div>
+        <h2>Haklarınız</h2>
+        <p>Kişisel verilerinizle ilgili aşağıdaki haklara sahipsiniz:</p>
+        <ul>
+          <li>Verilerinize erişim talep etme</li>
+          <li>Yanlış verilerin düzeltilmesini isteme</li>
+          <li>Verilerinizin silinmesini talep etme</li>
+          <li>Veri işlemeye itiraz etme</li>
+          <li>Veri taşınabilirliği talep etme</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">08</div>
+        <h2>Politika Değişiklikleri</h2>
+        <p>Bu politikayı zaman zaman güncelleyebiliriz. Önemli değişiklikler olduğunda uygulama içi bildirim veya e-posta aracılığıyla sizi bilgilendiririz. Güncel politikayı bu sayfada bulabilirsiniz.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">09</div>
+        <h2>İletişim</h2>
+        <p>Gizlilik politikamızla ilgili sorularınız için bize ulaşabilirsiniz:</p>
+        <a class="contact-card" href="mailto:ali.toraman.1@outlook.com">
+          <div class="contact-icon">✉️</div>
+          <span>ali.toraman.1@outlook.com</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 <span>Connexa</span>. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
