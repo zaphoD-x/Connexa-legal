@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hizmet Şartları – Connexa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0f14;
+      --surface: #141720;
+      --border: rgba(255,255,255,0.07);
+      --accent: #5b7fff;
+      --accent2: #a78bfa;
+      --text: #e8eaf0;
+      --muted: #8b90a0;
+      --heading-font: 'Syne', sans-serif;
+      --body-font: 'DM Sans', sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(91,127,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    header {
+      position: relative;
+      z-index: 1;
+      border-bottom: 1px solid var(--border);
+      padding: 28px 0;
+    }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--heading-font); font-weight: 700; font-size: 16px; color: #fff;
+    }
+    .brand-name { font-family: var(--heading-font); font-weight: 700; font-size: 20px; color: var(--text); }
+    main { position: relative; z-index: 1; padding: 60px 0 100px; }
+    .page-label {
+      display: inline-block;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(91,127,255,0.1);
+      border: 1px solid rgba(91,127,255,0.25);
+      border-radius: 20px; padding: 4px 14px; margin-bottom: 20px;
+    }
+    h1 {
+      font-family: var(--heading-font);
+      font-size: clamp(28px, 5vw, 42px); font-weight: 700; line-height: 1.15; margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .meta { font-size: 14px; color: var(--muted); margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .section {
+      margin-bottom: 44px; padding: 32px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      transition: border-color 0.2s;
+    }
+    .section:hover { border-color: rgba(91,127,255,0.2); }
+    .section-number { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; font-family: var(--heading-font); }
+    h2 { font-family: var(--heading-font); font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 14px; }
+    p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul { list-style: none; padding: 0; margin: 14px 0 0; }
+    ul li {
+      color: var(--muted); font-size: 15px;
+      padding: 6px 0 6px 20px; position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    ul li:last-child { border-bottom: none; }
+    ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 8px; }
+    .highlight-box {
+      background: rgba(91,127,255,0.06); border: 1px solid rgba(91,127,255,0.2);
+      border-radius: 12px; padding: 20px 24px; margin-top: 16px;
+    }
+    .highlight-box p { color: #c5cadc; font-size: 14px; margin: 0; }
+    .contact-card {
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 12px; padding: 20px 24px; margin-top: 16px;
+      text-decoration: none; transition: background 0.2s, border-color 0.2s;
+    }
+    .contact-card:hover { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.4); }
+    .contact-icon {
+      width: 40px; height: 40px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 18px;
+    }
+    .contact-card span { color: var(--accent2); font-size: 15px; font-weight: 500; }
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 28px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--muted); margin: 0; }
+    footer p span { color: var(--accent); }
+    @media (max-width: 600px) { .section { padding: 24px 20px; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a class="brand" href="#">
+        <div class="brand-logo">C</div>
+        <span class="brand-name">Connexa</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="page-label">Yasal Belge</div>
+      <h1>Hizmet Şartları</h1>
+      <p class="meta">Son güncelleme: 30 Mayıs 2026 &nbsp;·&nbsp; Connexa Mobil Uygulaması</p>
+
+      <div class="section">
+        <div class="section-number">01</div>
+        <h2>Kabul ve Kapsam</h2>
+        <p>Connexa uygulamasını indirerek veya kullanarak bu Hizmet Şartları'nı kabul etmiş sayılırsınız. Bu şartları kabul etmiyorsanız uygulamayı kullanmayınız.</p>
+        <p>Bu şartlar, Connexa üzerinden sunulan tüm sosyal medya ve mesajlaşma hizmetleri için geçerlidir.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">02</div>
+        <h2>Hesap Oluşturma ve Güvenlik</h2>
+        <p>Connexa'yı kullanmak için bir hesap oluşturmanız gerekmektedir. Hesabınızla ilgili aşağıdaki kurallara uymakla yükümlüsünüz:</p>
+        <ul>
+          <li>Gerçek ve doğru bilgiler sağlamak</li>
+          <li>Hesap şifrenizi gizli tutmak ve güvenliğini sağlamak</li>
+          <li>Hesabınız üzerinden gerçekleşen tüm aktivitelerden sorumlu olmak</li>
+          <li>Hesabınızın yetkisiz kullanımını derhal bize bildirmek</li>
+          <li>Başkasının hesabını kullanmamak veya başkası adına hesap açmamak</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">03</div>
+        <h2>Kullanım Koşulları</h2>
+        <p>Connexa'yı yalnızca yasal amaçlarla ve bu şartlara uygun biçimde kullanabilirsiniz. Aşağıdakiler kesinlikle yasaktır:</p>
+        <ul>
+          <li>Yasadışı içerik paylaşmak veya yaymak</li>
+          <li>Başka kullanıcıları taciz etmek, tehdit etmek veya zorbalık yapmak</li>
+          <li>Spam, yanıltıcı veya sahte içerik göndermek</li>
+          <li>Uygulamayı tersine mühendislik yoluyla analiz etmek</li>
+          <li>Otomatik araçlarla (bot) içerik üretmek veya hesap açmak</li>
+          <li>Connexa'nın altyapısına zarar verecek eylemlerde bulunmak</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">04</div>
+        <h2>İçerik ve Fikri Mülkiyet</h2>
+        <p>Connexa'da paylaştığınız içerikler size aittir. Ancak bu içerikleri platformumuzda paylaşarak, söz konusu içerikleri hizmetlerimizi sunmak amacıyla kullanmamıza izin vermiş olursunuz.</p>
+        <p>Connexa'nın tasarımı, logosu, yazılımı ve diğer tüm unsurları Connexa'ya aittir. Bu unsurlar izinsiz kullanılamaz.</p>
+        <div class="highlight-box">
+          <p>📌 Başkalarına ait telif hakkıyla korunan içerikleri izinsiz paylaşmak yasaktır ve hesabınızın askıya alınmasına yol açabilir.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">05</div>
+        <h2>Hizmet Değişiklikleri ve Kesintiler</h2>
+        <p>Connexa, önceden bildirimde bulunmaksızın hizmetlerini değiştirme, askıya alma veya sonlandırma hakkını saklı tutar. Planlı bakım çalışmaları için mümkün olduğunca önceden bildirim yapmaya çalışırız.</p>
+        <p>Hizmet kesintilerinden kaynaklanabilecek kayıplar için sorumluluk kabul etmiyoruz.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">06</div>
+        <h2>Hesap Feshi</h2>
+        <p>Bu şartları ihlal etmeniz durumunda hesabınız önceden bildirim yapılmaksızın askıya alınabilir veya kalıcı olarak kapatılabilir. Hesabınızı kendiniz de istediğiniz zaman silebilirsiniz.</p>
+        <ul>
+          <li>Hesap silme işlemi geri alınamaz</li>
+          <li>Silinen hesaba ait veriler gizlilik politikamız çerçevesinde kaldırılır</li>
+          <li>Hesap feshinden önceki yükümlülükler geçerliliğini korur</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">07</div>
+        <h2>Sorumluluk Sınırlaması</h2>
+        <p>Connexa, kullanıcılar arasındaki iletişimden veya paylaşılan içeriklerden doğan zararlardan sorumlu tutulamaz. Uygulama "olduğu gibi" sunulmaktadır; belirli bir amaca uygunluk garanti edilmez.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">08</div>
+        <h2>Geçerli Hukuk</h2>
+        <p>Bu şartlar Türkiye Cumhuriyeti kanunlarına tabidir. Uyuşmazlıklarda Türkiye mahkemeleri yetkilidir.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">09</div>
+        <h2>İletişim</h2>
+        <p>Hizmet şartlarımızla ilgili sorularınız için bize ulaşabilirsiniz:</p>
+        <a class="contact-card" href="mailto:connexa.00@gmail.com">
+          <div class="contact-icon">✉️</div>
+          <span>connexa.00@gmail.com</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 <span>Connexa</span>. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
