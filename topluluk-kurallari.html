@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Topluluk Kuralları – Connexa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0f14;
+      --surface: #141720;
+      --border: rgba(255,255,255,0.07);
+      --accent: #5b7fff;
+      --accent2: #a78bfa;
+      --text: #e8eaf0;
+      --muted: #8b90a0;
+      --heading-font: 'Syne', sans-serif;
+      --body-font: 'DM Sans', sans-serif;
+    }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--body-font); font-size: 16px; line-height: 1.75; min-height: 100vh;
+    }
+    body::before {
+      content: ''; position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(91,127,255,0.12) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+    }
+    header { position: relative; z-index: 1; border-bottom: 1px solid var(--border); padding: 28px 0; }
+    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-logo {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--heading-font); font-weight: 700; font-size: 16px; color: #fff;
+    }
+    .brand-name { font-family: var(--heading-font); font-weight: 700; font-size: 20px; color: var(--text); }
+    main { position: relative; z-index: 1; padding: 60px 0 100px; }
+    .page-label {
+      display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); background: rgba(91,127,255,0.1); border: 1px solid rgba(91,127,255,0.25);
+      border-radius: 20px; padding: 4px 14px; margin-bottom: 20px;
+    }
+    h1 {
+      font-family: var(--heading-font); font-size: clamp(28px, 5vw, 42px); font-weight: 700; line-height: 1.15; margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .meta { font-size: 14px; color: var(--muted); margin-bottom: 56px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+    .section {
+      margin-bottom: 44px; padding: 32px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; transition: border-color 0.2s;
+    }
+    .section:hover { border-color: rgba(91,127,255,0.2); }
+    .section-number { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; font-family: var(--heading-font); }
+    h2 { font-family: var(--heading-font); font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 14px; }
+    p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul { list-style: none; padding: 0; margin: 14px 0 0; }
+    ul li { color: var(--muted); font-size: 15px; padding: 6px 0 6px 20px; position: relative; border-bottom: 1px solid var(--border); }
+    ul li:last-child { border-bottom: none; }
+    ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; top: 8px; }
+
+    /* Kural kartları — yeşil/kırmızı */
+    .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    @media (max-width: 600px) { .rules-grid { grid-template-columns: 1fr; } }
+    .rule-card { border-radius: 12px; padding: 18px 20px; }
+    .rule-card.good { background: rgba(52,211,153,0.06); border: 1px solid rgba(52,211,153,0.2); }
+    .rule-card.bad  { background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.2); }
+    .rule-card .rule-title { font-family: var(--heading-font); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+    .rule-card.good .rule-title { color: #34d399; }
+    .rule-card.bad  .rule-title { color: #f87171; }
+    .rule-card ul { margin: 0; }
+    .rule-card ul li { font-size: 14px; border-bottom: none; padding: 3px 0 3px 18px; }
+    .rule-card.good ul li::before { color: #34d399; }
+    .rule-card.bad  ul li::before { color: #f87171; }
+
+    .highlight-box { background: rgba(91,127,255,0.06); border: 1px solid rgba(91,127,255,0.2); border-radius: 12px; padding: 20px 24px; margin-top: 16px; }
+    .highlight-box p { color: #c5cadc; font-size: 14px; margin: 0; }
+
+    /* Yaptırım seviyeleri */
+    .sanctions { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .sanction-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 18px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; }
+    .sanction-badge { min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; font-family: var(--heading-font); flex-shrink: 0; margin-top: 2px; }
+    .s1 { background: rgba(251,191,36,0.15); color: #fbbf24; }
+    .s2 { background: rgba(249,115,22,0.15); color: #f97316; }
+    .s3 { background: rgba(248,113,113,0.15); color: #f87171; }
+    .sanction-text p { color: var(--muted); font-size: 14px; margin: 0; }
+    .sanction-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 2px; }
+
+    .contact-card {
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 12px; padding: 20px 24px; margin-top: 16px;
+      text-decoration: none; transition: background 0.2s, border-color 0.2s;
+    }
+    .contact-card:hover { background: rgba(167,139,250,0.1); border-color: rgba(167,139,250,0.4); }
+    .contact-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+    .contact-card span { color: var(--accent2); font-size: 15px; font-weight: 500; }
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 28px 0; text-align: center; }
+    footer p { font-size: 13px; color: var(--muted); margin: 0; }
+    footer p span { color: var(--accent); }
+    @media (max-width: 600px) { .section { padding: 24px 20px; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a class="brand" href="#">
+        <div class="brand-logo">C</div>
+        <span class="brand-name">Connexa</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <div class="page-label">Yasal Belge</div>
+      <h1>Topluluk Kuralları</h1>
+      <p class="meta">Son güncelleme: 30 Mayıs 2026 &nbsp;·&nbsp; Connexa Mobil Uygulaması</p>
+
+      <div class="section">
+        <div class="section-number">01</div>
+        <h2>Connexa Topluluğuna Hoş Geldiniz</h2>
+        <p>Connexa, insanları bir araya getiren, güvenli ve saygılı bir iletişim ortamı sunmayı amaçlamaktadır. Bu kurallar, topluluğumuzu herkes için olumlu bir yer tutmak amacıyla belirlenmiştir.</p>
+        <p>Connexa'yı kullanarak bu kurallara uymayı kabul edersiniz.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">02</div>
+        <h2>Temel İlkeler</h2>
+        <div class="rules-grid">
+          <div class="rule-card good">
+            <div class="rule-title">✓ Bunları Yapın</div>
+            <ul>
+              <li>Saygılı ve nazik olun</li>
+              <li>Farklı görüşlere açık olun</li>
+              <li>Yapıcı geri bildirim verin</li>
+              <li>Sorunları bize bildirin</li>
+              <li>Özgün içerik paylaşın</li>
+            </ul>
+          </div>
+          <div class="rule-card bad">
+            <div class="rule-title">✗ Bunları Yapmayın</div>
+            <ul>
+              <li>Başkalarını taciz etmeyin</li>
+              <li>Nefret söylemi kullanmayın</li>
+              <li>Yanlış bilgi yaymayın</li>
+              <li>Spam göndermeyin</li>
+              <li>Hesap satmayın/devretmeyin</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">03</div>
+        <h2>Yasak İçerikler</h2>
+        <p>Aşağıdaki içerikler Connexa'da kesinlikle yasaktır:</p>
+        <ul>
+          <li>Şiddet, nefret veya ayrımcılık içeren paylaşımlar</li>
+          <li>Cinsel ya da müstehcen içerik</li>
+          <li>Başkalarının kişisel bilgilerini izinsiz paylaşmak (doxxing)</li>
+          <li>Sahte kimlik veya yanıltıcı profil oluşturmak</li>
+          <li>Zararlı yazılım veya kimlik avı bağlantıları</li>
+          <li>Telif hakkıyla korunan içerikleri izinsiz dağıtmak</li>
+          <li>Uyuşturucu, silah veya yasadışı ürün ticareti</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="section-number">04</div>
+        <h2>Saygılı İletişim</h2>
+        <p>Connexa farklı kültür, inanç ve görüşlerden insanları bir araya getirir. Aşağıdaki davranışlar topluluğumuza zarar verir:</p>
+        <ul>
+          <li>Irk, cinsiyet, din veya etnik kökene dayalı ayrımcılık</li>
+          <li>Kişisel saldırılar ve hakaretler</li>
+          <li>Kasıtlı olarak provokatif içerik üretmek (trolling)</li>
+          <li>Birinin peşini bırakmamak veya sürekli rahatsız etmek</li>
+        </ul>
+        <div class="highlight-box">
+          <p>💬 Bir anlaşmazlık yaşadığınızda önce diyalog kurmaya çalışın. Çözüm bulamazsanız kullanıcıyı engelleme veya şikayet etme seçeneklerini kullanabilirsiniz.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">05</div>
+        <h2>Yaptırımlar</h2>
+        <p>Kural ihlallerinde uygulayacağımız adımlar ihlal türü ve sıklığına göre belirlenir:</p>
+        <div class="sanctions">
+          <div class="sanction-item">
+            <div class="sanction-badge s1">1</div>
+            <div class="sanction-text">
+              <strong>Uyarı</strong>
+              <p>İlk veya hafif ihlallerde hesabınıza yazılı uyarı gönderilir.</p>
+            </div>
+          </div>
+          <div class="sanction-item">
+            <div class="sanction-badge s2">2</div>
+            <div class="sanction-text">
+              <strong>Geçici Askıya Alma</strong>
+              <p>Tekrarlanan veya orta düzey ihlallerde hesabınız belirli süreliğine kısıtlanır.</p>
+            </div>
+          </div>
+          <div class="sanction-item">
+            <div class="sanction-badge s3">3</div>
+            <div class="sanction-text">
+              <strong>Kalıcı Yasaklama</strong>
+              <p>Ağır veya sürekli ihlallerde hesabınız kalıcı olarak kapatılır ve itiraz hakkı sınırlıdır.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">06</div>
+        <h2>İhbar ve Şikayet</h2>
+        <p>Kurallara aykırı bir içerik veya davranışla karşılaştığınızda uygulama içindeki "Şikayet Et" özelliğini kullanabilir ya da doğrudan bize ulaşabilirsiniz. Tüm şikayetler gizlilik içinde incelenir.</p>
+        <div class="highlight-box">
+          <p>🔍 Asılsız şikayetler de incelemeye alınır. Kötü niyetli şikayetlerde hesabınıza yaptırım uygulanabilir.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-number">07</div>
+        <h2>Kural Güncellemeleri</h2>
+        <p>Connexa topluluğun ihtiyaçlarına göre bu kuralları güncelleme hakkını saklı tutar. Önemli değişiklikler uygulama içi bildirimle duyurulur.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-number">08</div>
+        <h2>İletişim</h2>
+        <p>Topluluk kurallarıyla ilgili sorularınız için bize ulaşabilirsiniz:</p>
+        <a class="contact-card" href="mailto:connexa.00@gmail.com">
+          <div class="contact-icon">✉️</div>
+          <span>connexa.00@gmail.com</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 <span>Connexa</span>. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
